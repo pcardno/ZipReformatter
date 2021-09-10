@@ -32,7 +32,31 @@ namespace ZipReformatter
             this.Confidence = inputFace.Confidence;
             this.Page = inputFace.Page;
             this.Segment = inputFace.Segment;
-            this.BoundingBox = inputFace.BoundingBox;
+
+            if (inputFace.BoundingBox != null)
+            {
+                this.BoundingBox = inputFace.BoundingBox;
+            }
+            else
+            {
+                this.BoundingBox = inputFace.VideoBoundingBox;
+
+                if (inputFace.Attributes != null)
+                {
+                    decimal currentConfidence = 0;
+
+                    foreach(Attribute attribute in inputFace.Attributes)
+                    {
+                        if (attribute.Confidence > currentConfidence)
+                        {
+                            currentConfidence = attribute.Confidence;
+                        }
+                    }
+
+                    this.Confidence = currentConfidence;
+                }
+
+            }
 
 
         }

@@ -7,20 +7,27 @@ using Newtonsoft.Json;
 
 namespace ZipReformatter
 {
-    class Landmark
+    class OutputBrand
     {
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        [JsonProperty("score")]
-        public decimal Confidence { get; set; }
+        [JsonProperty("Confidence")]
+        public decimal Score { get; set; }
 
-        public string Segment { get; set; }
-
-        [JsonProperty("boundingPoly")]
+        [JsonProperty("Bounding_box")]
         public BoundingBox BoundingBox { get; set; }
 
         [JsonProperty("file")]
         public string File { get; set; }
+
+        public OutputBrand(InputBrand inputFace)
+        {
+            this.Description = inputFace.Description;
+            this.Score = inputFace.Score;
+            this.BoundingBox = inputFace.BoundingBox;
+
+
+        }
     }
 }

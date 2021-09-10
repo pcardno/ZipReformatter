@@ -30,7 +30,7 @@ namespace ZipReformatter
         [JsonProperty("brands_detected")]
         public bool BrandsDetected { get; set; }
         [JsonProperty("brands")]
-        public List<Brand> Brands { get; set; }
+        public List<OutputBrand> Brands { get; set; }
 
         [JsonProperty("face_detected")]
         public bool FacesDetected { get; set; }

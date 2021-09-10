@@ -41,8 +41,8 @@ namespace ZipReformatter
 
         [JsonProperty("landmarks_detected")]
         public bool LandmarksDetected { get; set; }
-        //[JsonProperty("landmarks")]
-        //public List<Landmark> Landmarks { get; set; }
+        [JsonProperty("landmarks")]
+        public List<Landmark> Landmarks { get; set; }
 
         public bool NeedsSomeReview
         {

@@ -14,5 +14,8 @@ namespace ZipReformatter
 
         [JsonProperty("end_time")]
         public decimal EndTime { get; set; }
+
+        [JsonProperty("file")]
+        public string File { get; set; }
     }
 }

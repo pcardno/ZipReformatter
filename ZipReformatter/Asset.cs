@@ -22,8 +22,8 @@ namespace ZipReformatter
         public string AssetType { get; set; }
         [JsonProperty("brands_detected")]
         public bool BrandsDetected { get; set; }
-        //[JsonProperty("brands")]
-        //public List<Brand> Brands { get; set; }
+        [JsonProperty("brands")]
+        public Object Brands { get; set; }
 
         [JsonProperty("face_detected")]
         public bool FacesDetected { get; set; }
@@ -35,8 +35,8 @@ namespace ZipReformatter
 
         [JsonProperty("landmarks_detected")]
         public bool LandmarksDetected { get; set; }
-        //[JsonProperty("landmarks")]
-        //public List<Landmark> Landmarks { get; set; }
+        [JsonProperty("landmarks")]
+        public Object Landmarks { get; set; }
 
         public bool NeedsSomeReview
         {
