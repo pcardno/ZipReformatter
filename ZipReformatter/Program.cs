@@ -96,6 +96,8 @@ namespace ZipReformatter
                         }
                         if (asset.BrandsDetected)
                         {
+                            List<string> brandsToIgnore = new List<string> { "3M", "Scotch Tape", "Post-it Note", "BlueSG", "Scotchgard", "Nexcare", "Scotch-Brite" };
+
                             outputZipFile.BrandsDetected = true;
 
                             if (outputZipFile.Brands == null)
@@ -121,7 +123,14 @@ namespace ZipReformatter
 
                                             outputBrand.File = asset.FileName;
 
-                                            outputZipFile.Brands.Add(outputBrand);
+                                            if (!brandsToIgnore.Contains(outputBrand.Description))
+                                            {
+                                                outputZipFile.Brands.Add(outputBrand);
+                                            }
+                                            else
+                                            {
+                                                //Console.WriteLine("ha");
+                                            }
                                         }
 
                                     }
@@ -137,7 +146,14 @@ namespace ZipReformatter
 
                                         outputBrand.File = asset.FileName;
 
-                                        outputZipFile.Brands.Add(outputBrand);
+                                        if (!brandsToIgnore.Contains(outputBrand.Description))
+                                        {
+                                            outputZipFile.Brands.Add(outputBrand);
+                                        }
+                                        else
+                                        {
+                                            //Console.WriteLine("ha");
+                                        }
                                     }
 
                                     //Console.WriteLine("whoop whoop");
@@ -222,8 +238,15 @@ namespace ZipReformatter
                             }
                         }
                     }
+
+                    
                 }
 
+                //Do a quick check as we may have flagged it as true, but then not added anything because all the brands were on the ignore list
+                if ((outputZipFile.Brands == null)||(outputZipFile.Brands.Count == 0))
+                {
+                    outputZipFile.BrandsDetected = false;
+                }
                 outputZipFiles.Add(outputZipFile);
 
 
